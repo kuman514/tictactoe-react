@@ -69,10 +69,13 @@ class Board extends Component<BoardProps, BoardState> {
         newTurn = 2;
       }
 
+      const result = this.examineTiles(newTile);
+
       this.setState({
         tiles: newTile,
         turn: newTurn,
-        remain: this.state.remain - 1
+        remain: this.state.remain - 1,
+        winner: result
       });
     }
   }
@@ -101,10 +104,52 @@ class Board extends Component<BoardProps, BoardState> {
     );
   }
 
-  private examineTiles(): void {
+  private examineTiles(newTile: number[][]): number {
     // Across
+    for (let i = 0; i < 3; i++) {
+      let first = newTile[i][0];
+      if (first === 0) {
+        continue;
+      }
+      let found = true;
+      for (let j = 1; j < 3; j++) {
+        if (first !== newTile[i][j]) {
+          found = false;
+          break;
+        }
+      }
+      if (found) {
+        return first;
+      }
+    }
+
     // Down
+    for (let i = 0; i < 3; i++) {
+      let first = newTile[0][i];
+      if (first === 0) {
+        continue;
+      }
+      let found = true;
+      for (let j = 1; j < 3; j++) {
+        if (first !== newTile[j][i]) {
+          found = false;
+          break;
+        }
+      }
+      if (found) {
+        return first;
+      }
+    }
+
     // Diagonal
+    for (let i = 0; i < 3; i++) {
+      
+    }
+    for (let i = 0; i < 3; i++) {
+      
+    }
+
+    return 0;
   }
 
   private reset(): void {
