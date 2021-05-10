@@ -142,11 +142,11 @@ class Board extends Component<BoardProps, BoardState> {
     }
 
     // Diagonal
-    for (let i = 0; i < 3; i++) {
-      
+    if (newTile[0][0] !== 0 && newTile[0][0] === newTile[1][1] && newTile[1][1] === newTile[2][2]) {
+      return newTile[0][0];
     }
-    for (let i = 0; i < 3; i++) {
-      
+    if (newTile[0][2] !== 0 && newTile[0][2] === newTile[1][1] && newTile[1][1] === newTile[2][0]) {
+      return newTile[0][2];
     }
 
     return 0;
