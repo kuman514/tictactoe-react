@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 interface BoardState {
   tiles: number[][],
   turn: number,
-  remain: number
+  remain: number,
+  winner: number
 }
 
 interface BoardProps {
@@ -20,14 +21,14 @@ class Board extends Component<BoardProps, BoardState> {
         [0, 0, 0]
       ],
       turn: 1,
-      remain: 9
+      remain: 9,
+      winner: 0
     };
   }
   
   public render(): JSX.Element {
     return (
       <div className="Board">
-        {this.showGameTitle()}
         {this.showTiles()}
         {this.showCurrentTurn()}
       </div>
@@ -74,14 +75,6 @@ class Board extends Component<BoardProps, BoardState> {
         remain: this.state.remain - 1
       });
     }
-  }
-
-  private showGameTitle(): JSX.Element {
-    return (
-      <h1>
-        React Tic Tac Toe
-      </h1>
-    );
   }
 
   private showCurrentTurn(): JSX.Element {
