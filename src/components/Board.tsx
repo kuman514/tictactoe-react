@@ -25,7 +25,9 @@ class Board extends Component<BoardProps, BoardState> {
   public render(): JSX.Element {
     return (
       <div className="Board">
+        {this.showGameTitle()}
         {this.showTiles()}
+        {this.showCurrentTurn()}
       </div>
     );
   }
@@ -41,7 +43,27 @@ class Board extends Component<BoardProps, BoardState> {
         );
       }
     }
-    return (<div className="Tiles">{items}</div>);
+    return (
+      <div className="Tiles">
+        {items}
+      </div>
+    );
+  }
+
+  private showGameTitle(): JSX.Element {
+    return (
+      <h1>
+        React Tic Tac Toe
+      </h1>
+    );
+  }
+
+  private showCurrentTurn(): JSX.Element {
+    return (
+      <h2>
+        Player {this.state.turn}'s turn!
+      </h2>
+    );
   }
 }
 
