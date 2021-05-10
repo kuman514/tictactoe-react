@@ -14,4 +14,13 @@
 button {
   width: 100px;
   height: 100px;
+  background-color: white;
+}
+
+.player1 {
+  background-color: red;
+}
+
+.player2 {
+  background-color: blue;
 }
