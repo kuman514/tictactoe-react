@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 interface BoardState {
   tiles: number[][],
-  turn: number
+  turn: number,
+  remain: number
 }
 
 interface BoardProps {
@@ -18,7 +19,8 @@ class Board extends Component<BoardProps, BoardState> {
         [0, 0, 0],
         [0, 0, 0]
       ],
-      turn: 1
+      turn: 1,
+      remain: 9
     };
   }
   
@@ -37,17 +39,41 @@ class Board extends Component<BoardProps, BoardState> {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         items.push(
-          <button key={`${i}${j}`}>
+          <button className={`player${this.state.tiles[i][j]}`} key={`button-${i}${j}`} value={`${i}${j}`}>
             {this.state.tiles[i][j]}
           </button>
         );
       }
     }
     return (
-      <div className="Tiles">
+      <div className="Tiles" onMouseDown={(e) => {
+        e.preventDefault();
+        const [r, c]: string = (e.target as HTMLButtonElement).value;
+        this.setTile(Number(r), Number(c));
+      }}>
         {items}
       </div>
     );
+  }
+
+  private setTile(row: number, column: number): void {
+    if (this.state.tiles[row][column] === 0) {
+      let newTile: number[][] = Array.from({length: 3}, (value, index) => {
+        return Array.from(this.state.tiles[index]);
+      });
+      newTile[row][column] = this.state.turn;
+
+      let newTurn = 1;
+      if (this.state.turn === 1) {
+        newTurn = 2;
+      }
+
+      this.setState({
+        tiles: newTile,
+        turn: newTurn,
+        remain: this.state.remain - 1
+      });
+    }
   }
 
   private showGameTitle(): JSX.Element {
