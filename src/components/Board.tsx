@@ -58,7 +58,7 @@ class Board extends Component<BoardProps, BoardState> {
   }
 
   private setTile(row: number, column: number): void {
-    if (this.state.tiles[row][column] === 0) {
+    if (this.state.tiles[row][column] === 0 && this.state.remain > 0 && this.state.winner === 0) {
       let newTile: number[][] = Array.from({length: 3}, (value, index) => {
         return Array.from(this.state.tiles[index]);
       });
@@ -78,11 +78,46 @@ class Board extends Component<BoardProps, BoardState> {
   }
 
   private showCurrentTurn(): JSX.Element {
+    if (this.state.winner !== 0) {
+      return (
+        <h2>
+          Player {this.state.winner} wins!
+        </h2>
+      );
+    }
+
+    if (this.state.remain === 0) {
+      return (
+        <h2>
+          Draw.
+        </h2>
+      );
+    }
+    
     return (
       <h2>
         Player {this.state.turn}'s turn!
       </h2>
     );
+  }
+
+  private examineTiles(): void {
+    // Across
+    // Down
+    // Diagonal
+  }
+
+  private reset(): void {
+    this.setState({
+      tiles: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      turn: 1,
+      remain: 9,
+      winner: 0
+    });
   }
 }
 
