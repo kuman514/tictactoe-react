@@ -82,17 +82,23 @@ class Board extends Component<BoardProps, BoardState> {
   private showCurrentTurn(): JSX.Element {
     if (this.state.winner !== 0) {
       return (
-        <h2>
-          Player {this.state.winner} wins!
-        </h2>
+        <div className="Result">
+          <h2>
+            Player {this.state.winner} wins!
+          </h2>
+          {this.showResetButton()}
+        </div>
       );
     }
 
     if (this.state.remain === 0) {
       return (
-        <h2>
-          Draw.
-        </h2>
+        <div className="Result">
+          <h2>
+            Draw.
+          </h2>
+          {this.showResetButton()}
+        </div>
       );
     }
     
@@ -149,6 +155,16 @@ class Board extends Component<BoardProps, BoardState> {
     }
 
     return 0;
+  }
+
+  private showResetButton(): JSX.Element {
+    return (
+      <button className="RematchButton" onClick={() => {
+        this.reset();
+      }}>
+        Rematch
+      </button>
+    );
   }
 
   private reset(): void {
