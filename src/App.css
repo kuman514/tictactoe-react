@@ -28,3 +28,12 @@ button {
 .player2 {
   background-color: blue;
 }
+
+.RematchButton {
+  width: 200px;
+  height: 80px;
+}
+
+.RematchButton:hover {
+  background-color: turquoise;
+}
