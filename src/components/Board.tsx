@@ -48,8 +48,21 @@ class Board extends Component<BoardProps, BoardState> {
     return (
       <div className="Tiles" onMouseDown={(e) => {
         e.preventDefault();
-        const [r, c]: string = (e.target as HTMLButtonElement).value;
-        this.setTile(Number(r), Number(c));
+        if ((e.target as Element).className.search('player') === -1) {
+          console.log('EDGE');
+          return;
+        }
+        const r: string = (e.target as HTMLButtonElement).value[0];
+        const c: string = (e.target as HTMLButtonElement).value[1];
+        const rn: number = Number(r);
+        const cn: number = Number(c);
+        if (rn < 0 || rn >= 3) {
+          return;
+        }
+        if (cn < 0 || cn >= 3) {
+          return;
+        }
+        this.setTile(rn, cn);
       }}>
         {items}
       </div>
