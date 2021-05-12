@@ -41,7 +41,6 @@ class Board extends Component<BoardProps, BoardState> {
       for (let j = 0; j < 3; j++) {
         items.push(
           <button className={`player${this.state.tiles[i][j]}`} key={`button-${i}${j}`} value={`${i}${j}`}>
-            {this.state.tiles[i][j]}
           </button>
         );
       }
