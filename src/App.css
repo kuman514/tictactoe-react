@@ -21,12 +21,18 @@ button {
   transition: 100ms linear;
 }
 
+.Tiles > button {
+  color: white;
+}
+
 .player1 {
   background-color: red;
+  font-size: 68px;
 }
 
 .player2 {
   background-color: blue;
+  font-size: 68px;
 }
 
 .RematchButton {
