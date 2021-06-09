@@ -126,9 +126,12 @@ class Board extends Component<BoardProps, BoardState> {
     }
     
     return (
-      <h2>
-        Player {this.state.turn}'s turn!
-      </h2>
+      <div className="Result">
+        <h2>
+          Player {this.state.turn}'s turn!
+        </h2>
+        {this.showResetButton()}
+      </div>
     );
   }
 
