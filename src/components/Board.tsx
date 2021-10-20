@@ -39,18 +39,8 @@ class Board extends Component<BoardProps, BoardState> {
     let items: JSX.Element[] = [];
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        let mark = '';
-        switch (this.state.tiles[i][j]) {
-          case 1:
-            mark = 'O';
-            break;
-          case 2:
-            mark = 'X';
-            break;
-        }
         items.push(
           <button className={`player${this.state.tiles[i][j]}`} key={`button-${i}${j}`} value={`${i}${j}`}>
-            {mark}
           </button>
         );
       }
