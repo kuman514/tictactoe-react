@@ -1,6 +1,5 @@
 # Tic Tac Toe On React
-React + TypeScript로 Tic Tac Toe 게임을 만드는 프로젝트입니다.   
-[플레이해보기](https://kuman514.github.io/tictactoe-react/)
+React + TypeScript로 Tic Tac Toe 게임을 만드는 프로젝트입니다. 현재 운영이 종료되어, 더 이상 사용할 수 없습니다.
 
 # 게임 방법
 1. O와 X가 3*3 보드에서 차례대로 번갈아가며 타일을 놓습니다.
